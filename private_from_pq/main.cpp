@@ -81,7 +81,11 @@ int main(int argc, char *argv[])
 
 	FILE* rsapem = NULL;
 
+#if defined(_WIN32)
 	fopen_s(&rsapem, "privatekey.pem", "wb+");
+#else
+	rsapem = fopen("privatekey.pem", "wb+");
+#endif
 
 	if (rsapem) {
 
